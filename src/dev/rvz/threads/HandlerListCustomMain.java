@@ -1,0 +1,19 @@
+package dev.rvz.threads;
+
+public final class HandlerListCustomMain {
+
+	public static void main(String[] args) throws InterruptedException {
+		final ListCustom listCustom = new ListCustom();
+		for (Integer i = 0; i < 10; i++) {
+			Thread thread = new Thread(new TaskAddElement(listCustom, i));
+			thread.start();
+		}
+
+		Thread.sleep(2000);
+
+		for (Integer i = 0; i < listCustom.getLength(); i++) {
+			System.out.println(listCustom.getElementByIndex(i));
+		}
+	}
+
+}
