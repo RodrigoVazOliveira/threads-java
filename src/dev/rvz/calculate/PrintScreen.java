@@ -1,4 +1,4 @@
-package dev.rvz;
+package dev.rvz.calculate;
 
 public final class PrintScreen implements Runnable {
 

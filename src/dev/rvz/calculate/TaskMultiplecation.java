@@ -1,4 +1,4 @@
-package dev.rvz;
+package dev.rvz.calculate;
 
 import java.math.BigInteger;
 
