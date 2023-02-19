@@ -13,6 +13,7 @@ class ApplicationBathRoomMain {
 		taskBathroomTwo.start();
 		taskBathroomThree.start();
 		taskBathroomFour.start();
+		taskBathroomClean.setDaemon(true);
 		taskBathroomClean.start();
 	}
 

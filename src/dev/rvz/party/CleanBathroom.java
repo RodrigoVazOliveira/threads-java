@@ -10,7 +10,14 @@ final class CleanBathroom implements Runnable {
 
 	@Override
 	public void run() {
-		this.bathroom.clean();
+		while (true) {
+			this.bathroom.clean();
+			try {
+				Thread.sleep(15000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

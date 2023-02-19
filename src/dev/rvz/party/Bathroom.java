@@ -11,7 +11,7 @@ final class Bathroom implements MakeBathRoom {
 		synchronized (this) {
 
 			System.out.println(nameThread + " Entrando no banheiro");
-			if (isDirty) {
+			while (isDirty) {
 				this.waitOutSide(nameThread);
 			}
 
@@ -23,6 +23,7 @@ final class Bathroom implements MakeBathRoom {
 				e.printStackTrace();
 			}
 
+			this.isDirty = true;
 			System.out.println(nameThread + " Dando descarga");
 			System.out.println(nameThread + " Lavando a mão");
 			System.out.println(nameThread + " Saindo do banheiro");
@@ -35,7 +36,7 @@ final class Bathroom implements MakeBathRoom {
 		System.out.println(nameThread + " Batendo na porta");
 		synchronized (this) {
 			System.out.println(nameThread + " Entrando no banheiro");
-			if (isDirty) {
+			while (isDirty) {
 				this.waitOutSide(nameThread);
 			}
 
@@ -47,6 +48,7 @@ final class Bathroom implements MakeBathRoom {
 				e.printStackTrace();
 			}
 
+			this.isDirty = true;
 			System.out.println(nameThread + " Dando descarga");
 			System.out.println(nameThread + " Lavando a mão");
 			System.out.println(nameThread + " Saindo do banheiro");
