@@ -17,5 +17,4 @@ class ApplicationBathRoomMain {
 		taskBathroomClean.setPriority(Thread.MAX_PRIORITY);
 		taskBathroomClean.start();
 	}
-
 }

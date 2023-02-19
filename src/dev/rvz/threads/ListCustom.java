@@ -10,6 +10,17 @@ final class ListCustom {
 		elements[index] = element;
 		index++;
 		length++;
+
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		if (this.index == this.elements.length) {
+			System.out.println("A lista está cheia, notificando!");
+			this.notify();
+		}
 	}
 
 	public Integer getLength() {
