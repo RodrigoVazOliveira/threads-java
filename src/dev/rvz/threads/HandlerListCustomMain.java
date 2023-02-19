@@ -1,18 +1,22 @@
 package dev.rvz.threads;
 
+import java.util.List;
+import java.util.Vector;
+
 public final class HandlerListCustomMain {
 
 	public static void main(String[] args) throws InterruptedException {
-		final ListCustom listCustom = new ListCustom();
+		final List<String> strings = new Vector<>();
 		for (Integer i = 0; i < 10; i++) {
-			Thread thread = new Thread(new TaskAddElement(listCustom, i));
+			final Thread thread = new Thread(new TaskAddElement(strings, i));
 			thread.start();
 		}
 
 		Thread.sleep(2000);
 
-		for (Integer i = 0; i < listCustom.getLength(); i++) {
-			System.out.println(listCustom.getElementByIndex(i));
+		final int sizeStrings = strings.size();
+		for (Integer i = 0; i < sizeStrings; i++) {
+			System.out.println(strings.get(i));
 		}
 	}
 
