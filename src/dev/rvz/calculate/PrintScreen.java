@@ -2,11 +2,11 @@ package dev.rvz.calculate;
 
 public final class PrintScreen implements Runnable {
 
-    @Override
-    public void run() {
-	for (Integer i = 0; i < 1000; i++) {
-	    System.out.println("Olá");
+	@Override
+	public void run() {
+		for (Integer i = 0; i < 1000; i++) {
+			System.out.println("Olá");
+		}
 	}
-    }
 
 }
