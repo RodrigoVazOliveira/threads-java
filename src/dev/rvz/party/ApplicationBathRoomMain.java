@@ -14,6 +14,7 @@ class ApplicationBathRoomMain {
 		taskBathroomThree.start();
 		taskBathroomFour.start();
 		taskBathroomClean.setDaemon(true);
+		taskBathroomClean.setPriority(Thread.MAX_PRIORITY);
 		taskBathroomClean.start();
 	}
 
