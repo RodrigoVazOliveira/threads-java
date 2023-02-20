@@ -11,11 +11,13 @@ final class TaskPrintList implements Runnable {
 	@Override
 	public void run() {
 		synchronized (listCustom) {
-			try {
-				System.out.println("Esperando, aguardando notificação");
-				listCustom.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			if (!listCustom.isFull()) { // verifica se a lista não está cheia
+				try {
+					System.out.println("Esperando, aguardando notificação");
+					listCustom.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 
 			final Integer length = listCustom.getLength();

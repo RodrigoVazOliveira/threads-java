@@ -17,7 +17,7 @@ final class ListCustom {
 			e.printStackTrace();
 		}
 
-		if (this.index == this.elements.length) {
+		if (isFull()) {
 			System.out.println("A lista está cheia, notificando!");
 			this.notify();
 		}
@@ -29,5 +29,9 @@ final class ListCustom {
 
 	public String getElementByIndex(Integer index) {
 		return elements[index];
+	}
+
+	public Boolean isFull() {
+		return this.index == this.elements.length;
 	}
 }
