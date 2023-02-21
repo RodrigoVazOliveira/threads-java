@@ -22,6 +22,16 @@ final class DistributeConnection implements Runnable {
 
 			while (scanner.hasNextLine()) {
 				final String line = scanner.nextLine();
+				System.out.println("comando recebido " + line);
+
+				if (line.equalsIgnoreCase("c1")) {
+					System.out.println("Confirmação de cliente C1");
+				} else if (line.equalsIgnoreCase("c2")) {
+					System.out.println("Confirmação de cliente C2");
+				} else {
+					System.out.println("Comando não encontrado!");
+				}
+
 				System.out.println(line);
 			}
 
@@ -34,5 +44,4 @@ final class DistributeConnection implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
 }

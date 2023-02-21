@@ -19,6 +19,6 @@ final class ServerMain {
 			final DistributeConnection distributeConnection = new DistributeConnection(socket);
 			executorService.execute(distributeConnection);
 		}
-	}
 
+	}
 }
