@@ -7,11 +7,12 @@ import java.net.Socket;
 import java.util.Scanner;
 
 final class DistributeConnection implements Runnable {
-
 	private final Socket socket;
+	private final TaskServerSocket taskServerSocket;
 
-	public DistributeConnection(Socket socket) {
+	public DistributeConnection(Socket socket, TaskServerSocket taskServerSocket) {
 		this.socket = socket;
+		this.taskServerSocket = taskServerSocket;
 	}
 
 	@Override
@@ -32,6 +33,9 @@ final class DistributeConnection implements Runnable {
 				} else if (line.equalsIgnoreCase("c2")) {
 					System.out.println("Confirmação de cliente C2");
 					printStream.println("Confirmação de cliente C2");
+				} else if (line.equals("fim")) {
+					System.out.println("Desligando o servidor");
+					taskServerSocket.down();
 				} else {
 					System.out.println("Comando não encontrado!");
 					printStream.println("Comando não encontrado!");
