@@ -6,27 +6,27 @@ import java.util.Scanner;
 
 final class GetOutPutServer implements Runnable {
 
-    private final Socket socket;
+	private final Socket socket;
 
-    public GetOutPutServer(Socket socket) {
-	this.socket = socket;
-	// TODO Auto-generated constructor stub
-    }
-
-    @Override
-    public void run() {
-	System.out.println("Recebendo dados do servidor!");
-	try {
-	    final Scanner scanner = new Scanner(socket.getInputStream());
-	    while (scanner.hasNextLine()) {
-		final String line = scanner.nextLine();
-		System.out.println(line);
-	    }
-
-	    scanner.close();
-	} catch (IOException e) {
-	    e.printStackTrace();
+	public GetOutPutServer(Socket socket) {
+		this.socket = socket;
+		// TODO Auto-generated constructor stub
 	}
-    }
+
+	@Override
+	public void run() {
+		System.out.println("Recebendo dados do servidor!");
+		try {
+			final Scanner scanner = new Scanner(socket.getInputStream());
+			while (scanner.hasNextLine()) {
+				final String line = scanner.nextLine();
+				System.out.println(line);
+			}
+
+			scanner.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

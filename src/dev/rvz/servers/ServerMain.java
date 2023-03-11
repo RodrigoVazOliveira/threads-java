@@ -4,8 +4,8 @@ import java.io.IOException;
 
 final class ServerMain {
 
-    public static void main(String[] args) throws IOException {
-	final TaskServerSocket taskServerSocket = new TaskServerSocket();
-	taskServerSocket.run();
-    }
+	public static void main(String[] args) throws IOException {
+		final TaskServerSocket taskServerSocket = new TaskServerSocket();
+		taskServerSocket.run();
+	}
 }
