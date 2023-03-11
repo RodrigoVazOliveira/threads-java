@@ -7,25 +7,25 @@ import javax.swing.JTextField;
 
 public class CreateWindow {
 
-	private final JFrame window;
+    private final JFrame window;
 
-	public CreateWindow(JFrame window) {
-		super();
-		this.window = window;
-	}
+    public CreateWindow(JFrame window) {
+	super();
+	this.window = window;
+    }
 
-	public ApplicationWindow createWindow() {
-		JTextField inputNumberOne = new JTextField(10);
-		JTextField inputNumberTwo = new JTextField(10);
-		JButton button = new JButton(" = ");
-		JLabel result = new JLabel("              ?             ");
+    public ApplicationWindow createWindow() {
+	JTextField inputNumberOne = new JTextField(10);
+	JTextField inputNumberTwo = new JTextField(10);
+	JButton button = new JButton(" = ");
+	JLabel result = new JLabel("              ?             ");
 
-		ActionButton actionButton = new ActionButton(inputNumberOne, inputNumberTwo, result);
-		button.addActionListener(actionButton);
+	ActionButton actionButton = new ActionButton(inputNumberOne, inputNumberTwo, result);
+	button.addActionListener(actionButton);
 
-		ApplicationWindow applicationWindow = new ApplicationWindow(inputNumberOne, inputNumberTwo, result, button,
-				window);
+	ApplicationWindow applicationWindow = new ApplicationWindow(inputNumberOne, inputNumberTwo, result, button,
+		window);
 
-		return applicationWindow;
-	}
+	return applicationWindow;
+    }
 }

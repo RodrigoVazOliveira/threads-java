@@ -8,20 +8,21 @@ import javax.swing.JTextField;
 
 public class ActionButton implements ActionListener {
 
-	private final JTextField inputNumberOne;
-	private final JTextField inputNumberTwo;
-	private final JLabel result;
+    private final JTextField inputNumberOne;
+    private final JTextField inputNumberTwo;
+    private final JLabel result;
 
-	public ActionButton(JTextField inputNumberOne, JTextField inputNumberTwo, JLabel result) {
-		this.inputNumberOne = inputNumberOne;
-		this.inputNumberTwo = inputNumberTwo;
-		this.result = result;
-	}
+    public ActionButton(JTextField inputNumberOne, JTextField inputNumberTwo, JLabel result) {
+	this.inputNumberOne = inputNumberOne;
+	this.inputNumberTwo = inputNumberTwo;
+	this.result = result;
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		TaskMultiplecation taskMultiplecation = new TaskMultiplecation(inputNumberOne, inputNumberTwo, result);
-		Thread threadMultiplication = new Thread(taskMultiplecation, "Thread calculadora");
-		threadMultiplication.start();
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+	TaskMultiplecation taskMultiplecation = new TaskMultiplecation(inputNumberOne, inputNumberTwo, result);
+	Thread threadMultiplication = new Thread(taskMultiplecation, "Thread calculadora");
+
+	threadMultiplication.start();
+    }
 }
