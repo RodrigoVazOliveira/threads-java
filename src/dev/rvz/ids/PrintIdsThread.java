@@ -1,12 +1,5 @@
 package dev.rvz.ids;
 
-/**
- * 
- * Imprimi os ids das threads
- * 
- * @author Rodrigo Vaz
- *
- */
 public final class PrintIdsThread implements Runnable {
 
     @Override
