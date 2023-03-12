@@ -49,6 +49,9 @@ final class DistributeConnection implements Runnable {
 					final Future<String> futureC2WS = this.executorService.submit(commandC2WS);
 					final Future<String> futureC2Database = this.executorService.submit(commandC2AccessDatabase);
 
+					this.executorService
+							.submit(new JoinResultWSAndFutureDatabase(futureC2WS, futureC2Database, printStream));
+
 				} else if (line.equals("fim")) {
 					System.out.println("Desligando o servidor");
 					taskServerSocket.down();
