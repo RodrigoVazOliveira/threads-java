@@ -7,6 +7,9 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 
+import dev.rvz.servers.commands.CommandC1;
+import dev.rvz.servers.commands.CommandC2;
+
 final class DistributeConnection implements Runnable {
 	private final ExecutorService executorService;
 	private final Socket socket;
@@ -38,6 +41,8 @@ final class DistributeConnection implements Runnable {
 				} else if (line.equalsIgnoreCase("c2")) {
 					System.out.println("Confirmação de cliente C2");
 					printStream.println("Confirmação de cliente C2");
+					final CommandC2 commandC2 = new CommandC2(printStream);
+					this.executorService.execute(commandC2);
 				} else if (line.equals("fim")) {
 					System.out.println("Desligando o servidor");
 					taskServerSocket.down();
