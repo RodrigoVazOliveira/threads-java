@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class TaskServerSocket {
+final class TaskServerSocket {
 	private final ServerSocket serverSocket;
 	private final Integer PORT = 12345;
 	private final ExecutorService executorService;
@@ -16,7 +16,8 @@ public final class TaskServerSocket {
 	public TaskServerSocket() throws IOException {
 		System.out.println("--------- Iniciando servidor --------");
 		this.serverSocket = new ServerSocket(PORT);
-		this.executorService = Executors.newCachedThreadPool();
+		final ThreadFactoryCustom threadFactoryCustom = new ThreadFactoryCustom();
+		this.executorService = Executors.newCachedThreadPool(threadFactoryCustom);
 		this.isRunning = new AtomicBoolean(true);
 	}
 
