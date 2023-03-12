@@ -15,8 +15,9 @@ public final class CommandC2AccessDatabase implements Callable<String> {
 	public String call() throws Exception {
 		this.printStream.println("Servidor recebeu comando C2 - ACESSO A BASE DE DADOS");
 		this.printStream.println("Processando comando C2 - banco de dados");
-		Thread.sleep(25000);
+		Thread.sleep(10000);
 		Integer number = new Random().nextInt(100) + 1;
+		this.printStream.println("Servidor finalizou o comando C2 Access Database");
 		return number.toString();
 	}
 
