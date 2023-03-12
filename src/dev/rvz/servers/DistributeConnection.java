@@ -5,12 +5,15 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
 
 final class DistributeConnection implements Runnable {
+	private final ExecutorService executorService;
 	private final Socket socket;
 	private final TaskServerSocket taskServerSocket;
 
-	public DistributeConnection(Socket socket, TaskServerSocket taskServerSocket) {
+	public DistributeConnection(ExecutorService executorService, Socket socket, TaskServerSocket taskServerSocket) {
+		this.executorService = executorService;
 		this.socket = socket;
 		this.taskServerSocket = taskServerSocket;
 	}
@@ -30,6 +33,8 @@ final class DistributeConnection implements Runnable {
 				if (line.equalsIgnoreCase("c1")) {
 					System.out.println("Confirmação de cliente C1");
 					printStream.println("Confirmação de cliente C1");
+					final CommandC1 commandC1 = new CommandC1(printStream);
+					this.executorService.execute(commandC1);
 				} else if (line.equalsIgnoreCase("c2")) {
 					System.out.println("Confirmação de cliente C2");
 					printStream.println("Confirmação de cliente C2");

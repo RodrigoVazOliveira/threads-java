@@ -10,7 +10,6 @@ final class GetOutPutServer implements Runnable {
 
 	public GetOutPutServer(Socket socket) {
 		this.socket = socket;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

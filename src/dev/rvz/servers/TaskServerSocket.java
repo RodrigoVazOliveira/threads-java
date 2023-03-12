@@ -24,7 +24,7 @@ public final class TaskServerSocket {
 		while (this.isRunning.get()) {
 			final Socket socket = this.serverSocket.accept();
 			System.out.println("Aceitando nova conexão - porta: " + socket.getPort());
-			final DistributeConnection distributeConnection = new DistributeConnection(socket, this);
+			final DistributeConnection distributeConnection = new DistributeConnection(executorService, socket, this);
 			executorService.execute(distributeConnection);
 		}
 	}
