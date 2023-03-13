@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -16,11 +17,14 @@ final class DistributeConnection implements Runnable {
 	private final ExecutorService executorService;
 	private final Socket socket;
 	private final TaskServerSocket taskServerSocket;
+	private final BlockingQueue<String> queueCommand;
 
-	public DistributeConnection(ExecutorService executorService, Socket socket, TaskServerSocket taskServerSocket) {
+	public DistributeConnection(ExecutorService executorService, Socket socket, TaskServerSocket taskServerSocket,
+			BlockingQueue<String> queueCommand) {
 		this.executorService = executorService;
 		this.socket = socket;
 		this.taskServerSocket = taskServerSocket;
+		this.queueCommand = queueCommand;
 	}
 
 	@Override
@@ -52,6 +56,9 @@ final class DistributeConnection implements Runnable {
 					this.executorService
 							.submit(new JoinResultWSAndFutureDatabase(futureC2WS, futureC2Database, printStream));
 
+				} else if (line.equalsIgnoreCase("C3")) {
+					this.queueCommand.put(line); // bloquear
+					printStream.println("Comando C3 adicionado na fila!");
 				} else if (line.equals("fim")) {
 					System.out.println("Desligando o servidor");
 					taskServerSocket.down();
@@ -60,7 +67,6 @@ final class DistributeConnection implements Runnable {
 					printStream.println("Comando não encontrado!");
 				}
 
-				System.out.println(line);
 			}
 
 			scanner.close();
