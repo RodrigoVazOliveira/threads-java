@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 
 final class ClientServer {
 
-	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
+	public static vo3id main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		final Socket socket = new Socket("localhost", 12345);
 		final Thread taskPutAndOutPutInfo = new Thread(new PutAndOutPutInfo(socket));
 		final Thread taskGetOutput = new Thread(new GetOutPutServer(socket));
